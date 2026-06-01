@@ -1,0 +1,41 @@
+﻿@model IEnumerable<raspored_casova.Models.Raspored>
+@{
+    ViewBag.Title = "Index";
+    var grupisano=Model.GroupBy(r => r.Rbr).OrderBy(g => g.Key).ToList();
+    string[] dani =
+ {
+    "Ponedeljak",
+    "Utorak",
+    "Sreda",
+    "Cetvrtak",
+    "Petak"
+};
+
+}
+<h2>index</h2>
+<table class="raspored">
+    <thead>
+        <tr>
+            <th>Rbr</th>
+            <th>Pon</th>
+            <th>Uto</th>
+            <th>Sre</th>
+            <th>Cet</th>
+            <th>Pet</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var grupa in grupisano)
+        {
+            <tr>
+                <td>@grupa.Key</td>
+                @foreach(var dan in dani)
+                {
+                    var predmet = grupa.FirstOrDefault(x => string.Equals(x.DanUNedelji, dan, System.StringComparison.OrdinalIgnoreCase));
+                    //<td>@predmet</td>
+                    <td>@(predmet?.Predmet)</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+﻿@*
+    
+*@
+@{
+    ViewBag.Title = "Ucitaj";
+}
+<h2>ucitaj</h2>
+@using (Html.BeginForm("Ucitaj", "Raspored", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="xmlFile">izaberite xml datoteku</label>
+        <input type="file" id="xmlFile" name="xmlFile" accept=".xml" />
+        <button type="submit" class="btn">ucitaj</button>
+
+    </div>
+}
+@if(ViewBag.Greska != null)
+{
+    <p class="greska">@ViewBag.Greska</p>
+}
