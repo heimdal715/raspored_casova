@@ -33,7 +33,8 @@
                 {
                     var predmet = grupa.FirstOrDefault(x => string.Equals(x.DanUNedelji, dan, System.StringComparison.OrdinalIgnoreCase));
                     //<td>@predmet</td>
-                    <td>@(predmet?.Predmet)</td>
+                    <td>@(predmet?.Predmet)</td> 
+//<td>@(predmet != null ? predmet.Predmet : "")</td>
                 }
             </tr>
         }
