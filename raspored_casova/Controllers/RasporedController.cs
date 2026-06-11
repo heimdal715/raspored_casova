@@ -23,9 +23,9 @@ namespace raspored_casova.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Ucitaj(IFormFile xmlFile) //public ActionResult Ucitaj(HttpPostedFileBase xmlFile)
+        public ActionResult Ucitaj(IFormFile xmlFile) //public ActionResult Ucitaj(HttpPostedFileBase xmlFile) AKO OVO  NE RADI
         {
-            // if (xmlFile == null || xmlFile.ContentLength == 0) 
+            // if (xmlFile == null || xmlFile.ContentLength == 0)  AKO OVO DOLE NE RADI
             if (xmlFile == null || xmlFile.Length == 0)
             {
                 ViewBag.Greska = "niste izabrali validan fajl";
@@ -37,7 +37,7 @@ namespace raspored_casova.Controllers
                 using (var stream = xmlFile.inputStream)
                 {
                     var model = (RasporedCasovaModel)serializer.Deserialize(stream);
-                    rasporedCasova = model.casovi;
+                    rasporedCasova = model.casovi;  A I OVO AKO OVO DOLE NE RADI
                 }*/
                 var serializer = new XmlSerializer(typeof(RasporedCasovaModel));
 
